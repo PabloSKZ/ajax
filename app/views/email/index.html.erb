@@ -1,0 +1,24 @@
+<%= form_tag(email_index_path, method: "post", remote: true)  do %>
+  <div class="text-center">
+    <%= submit_tag("Connerie d\'AJAX", class: "btn btn-start-order", remote: true) %>
+  </div>
+<% end %>
+
+<h1 class="text-center" style="border: 1px solid black; width: 15%; margin: auto; margin-bottom: 5px; color: white; background-color: rgb(83, 83, 83);">Emails</h1>
+
+<div class="container" style="border: 1px solid black; padding-top: 10px;">
+  <div class="row">
+    <div class="col" id="object">
+      <h2>Object</h2><hr>
+      <% @email.each do |emails| %>
+      <%= link_to emails.object, email_path(emails.id), id: "object", remote: true %><hr>
+      <% end %>
+    </div>  
+    <div class="col" id="body">
+      <h2>Body</h2><hr>
+      <% @email.each do |emails| %>
+      <%= truncate(emails.body, :length => 50) %><hr>
+      <% end %>
+    </div>
+  </div>
+</div>
